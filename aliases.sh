@@ -1,18 +1,9 @@
-# Some good standards, which are not used if the user
-# creates his/her own .bashrc/.bash_profile
-
-# --show-control-chars: help showing Korean or accented characters
-alias ls='ls -F --color=auto --show-control-chars'
-alias ll='ls -l'
-alias gitcom="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-
 # custom aliases
 alias cls='printf "\033c"'
 
 # custom git additions
 
 MAIN=""
-
 alias g='git'
 alias gs='git status'
 alias ga='git add .'
@@ -107,18 +98,3 @@ ghelp () {
 	echo -e "\033[42;30m pushchanges \033[0m + [COMMIG_MSG]        add, commit and push changes"
 	echo "                                    defaults to 'update'"
 }
-
-case "$TERM" in
-xterm*)
-	# The following programs are known to require a Win32 Console
-	# for interactive usage, therefore let's launch them through winpty
-	# when run inside `mintty`.
-	for name in node ipython php php5 psql python2.7
-	do
-		case "$(type -p "$name".exe 2>/dev/null)" in
-		''|/usr/bin/*) continue;;
-		esac
-		alias $name="winpty $name.exe"
-	done
-	;;
-esac
