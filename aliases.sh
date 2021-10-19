@@ -43,7 +43,8 @@ mergemaster () {
 	update
 	BRANCH=$(curbranch)
 	switch $MAIN
-	gpu
+	g stash
+	gu
 	switch $BRANCH
 	gm $MAIN
 }
@@ -66,7 +67,7 @@ prfixes () {
 	ga && gc "$C_NAME" && gp
 }
 
-pushchanges () {
+pchanges () {
 	C_NAME="update"
 	if [ "$1" != "" ]; then
 		C_NAME=$1
@@ -95,6 +96,6 @@ ghelp () {
 	echo -e "\033[42;30m curbranch \033[0m                         print current branch name"
 	echo -e "\033[42;30m prfixes \033[0m + [COMMIG_MSG]            add, commit and push changes"
 	echo "                                    defaults to 'PR fixes'"
-	echo -e "\033[42;30m pushchanges \033[0m + [COMMIG_MSG]        add, commit and push changes"
+	echo -e "\033[42;30m pchanges \033[0m + [COMMIG_MSG]        add, commit and push changes"
 	echo "                                    defaults to 'update'"
 }
